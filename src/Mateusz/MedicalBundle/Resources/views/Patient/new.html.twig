@@ -1,4 +1,9 @@
-<p>{{ app.session.flashbag.get('message').0 }}</p>
+{#
+{% if app.session.flashbag.get('message').0 %}
+    <p>{{ app.session.flashbag.get('message').0 }}</p>
+{% endif %}
+#}
+
 {{ form_start(form) }}
      {{ form_errors(form) }}
 

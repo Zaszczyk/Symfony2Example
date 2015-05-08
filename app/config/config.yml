@@ -64,6 +64,12 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+services:
+    event.subscriber:
+        class: Mateusz\MedicalBundle\EventSubscriber\PatientNamesSubscriber
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
