@@ -1,0 +1,3 @@
+patient:
+     pattern:  /patient/new
+     defaults: { _controller: MateuszMedicalBundle:Patient:new }

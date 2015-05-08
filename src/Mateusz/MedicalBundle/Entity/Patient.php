@@ -52,7 +52,7 @@ class Patient {
     private $clinics;
 
     public function __construct() {
-        $this->$clinics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->clinics = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

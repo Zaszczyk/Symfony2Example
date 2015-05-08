@@ -1,8 +1,8 @@
-mateusz_medical:
-    resource: "@MateuszMedicalBundle/Controller/"
-    type:     annotation
-    prefix:   /
+#MateuszMedicalBundle:
+#    resource: "@MateuszMedicalBundle/Resources/config/routing.yml"
+#    type:     annotation
+#    prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+patient:
+     pattern:  /patient/new
+     defaults: { _controller: MateuszMedicalBundle:Patient:new }

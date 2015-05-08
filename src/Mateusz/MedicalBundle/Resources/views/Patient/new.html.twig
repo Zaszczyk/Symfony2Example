@@ -1,0 +1,26 @@
+<p>{{ app.session.flashbag.get('message').0 }}</p>
+{{ form_start(form) }}
+     {{ form_errors(form) }}
+
+<div>
+    {{ form_label(form.firstName, 'Imię') }}
+    {{ form_widget(form.firstName) }}
+</div>
+
+<div>
+    {{ form_label(form.lastName, 'Nazwisko') }}
+    {{ form_widget(form.lastName) }}
+</div>
+
+<div>
+    {{ form_label(form.pesel, 'Pesel') }}
+    {{ form_widget(form.pesel) }}
+</div>
+
+<div>
+    {{ form_label(form.dateBirth, 'Data urodzenia') }}
+    {{ form_widget(form.dateBirth) }}
+</div>
+
+<input type="submit" value="Dodaj" />
+{{ form_end(form) }}
