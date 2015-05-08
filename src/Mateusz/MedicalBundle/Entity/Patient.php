@@ -26,12 +26,12 @@ class Patient {
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, name="first_name")
      */
     protected $firstName;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, name="last_name")
      */
     protected $lastName;
 
@@ -41,7 +41,7 @@ class Patient {
     protected $pesel;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="date_birth")
      */
     protected $dateBirth;
 
