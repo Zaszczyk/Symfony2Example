@@ -41,7 +41,7 @@ class PatientController extends Controller
             $em->flush();
 
             $session = $this->getRequest()->getSession();
-            $session->getFlashBag()->add('message', 'Pacjent został dodany.');
+            $session->getFlashBag()->add('success', 'Pacjent został dodany.');
         }
 
 

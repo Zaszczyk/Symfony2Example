@@ -11,6 +11,7 @@ namespace Mateusz\MedicalBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\ManyToMany;
+use Amukana\PLValidatorBundle\Validator\Constraints as PLValid;
 
 /**
  * @ORM\Entity(repositoryClass="PatientRepository")
@@ -36,6 +37,7 @@ class Patient {
     protected $lastName;
 
     /**
+     * @PLValid\Pesel()
      * @ORM\Column(type="string", length=11, options={"fixed" = true})
      */
     protected $pesel;

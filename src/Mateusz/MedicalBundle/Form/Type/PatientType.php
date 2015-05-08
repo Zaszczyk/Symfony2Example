@@ -24,6 +24,6 @@ class PatientType extends AbstractType {
 
     public function getName()
     {
-        return 'task';
+        return 'patient';
     }
 }
