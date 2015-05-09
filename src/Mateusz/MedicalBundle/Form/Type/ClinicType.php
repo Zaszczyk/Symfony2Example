@@ -11,20 +11,17 @@ namespace Mateusz\MedicalBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class PatientType extends AbstractType {
+class ClinicType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName', 'text');
-        $builder->add('lastName', 'text');
-        $builder->add('pesel', 'text');
-        $builder->add('dateBirth', 'date');
-        $builder->add('clinics', 'collection', array('type' => new ClinicType()));
+        $builder->add('name', 'text');
         $builder->setMethod('post');
+
     }
 
     public function getName()
     {
-        return 'patient';
+        return 'clinic';
     }
 }

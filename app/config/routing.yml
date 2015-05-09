@@ -6,3 +6,7 @@
 patient:
      pattern:  /patient/new
      defaults: { _controller: MateuszMedicalBundle:Patient:new }
+
+clinic:
+     pattern:  /clinic/new
+     defaults: { _controller: MateuszMedicalBundle:Clinic:new }
