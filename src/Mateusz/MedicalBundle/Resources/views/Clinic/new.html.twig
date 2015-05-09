@@ -1,51 +1,30 @@
-{% for label, flashes in app.session.flashbag.all %}
-    {% for flash in flashes %}
-        <p class="{{ label }}">
-            {{ flash }}
-        </p>
-    {% endfor %}
-{% endfor %}
+{% extends "MateuszMedicalBundle::layout.html.twig" %}
 
-{{ form_start(form) }}
-     {{ form_errors(form) }}
+{% block title "MateuszMedicalBundle" %}
 
-    <div>
-        {{ form_label(form.name, 'Nazwa kliniki') }}
-        {{ form_widget(form.name) }}
-    </div>
+{% block content %}
 
-    <div>
-        <h3>Pacjenci</h3>
-        <ul class="patients" data-prototype="{{ form_widget(form.patients.vars.prototype)|e }}">
-{#            {% for patient in form.patients %}
-                <div>
-                    {{ form_label(patient.firstName, 'Imię') }}
-                    {{ form_widget(patient.firstName) }}
-                </div>
+    {{ form_start(form) }}
+         {{ form_errors(form) }}
 
-                <div>
-                    {{ form_label(patient.lastName, 'Nazwisko') }}
-                    {{ form_widget(patient.lastName) }}
-                </div>
+        <div>
+            {{ form_label(form.name, 'Nazwa kliniki') }}
+            {{ form_widget(form.name) }}
+        </div>
 
-                <div>
-                    {{ form_label(patient.pesel, 'Pesel') }}
-                    {{ form_widget(patient.pesel) }}
-                </div>
+        <div>
+            <h3>Pacjenci</h3>
+            <ul class="patients" data-prototype="{{ form_widget(form.patients.vars.prototype)|e }}">
+            </ul>
+        </div>
 
-                <div>
-                    {{ form_label(patient.dateBirth, 'Data urodzenia') }}
-                    {{ form_widget(patient.dateBirth) }}
-                </div>
-            {% endfor %}#}
-        </ul>
-    </div>
+        <input type="submit" value="Dodaj" />
+    {{ form_end(form) }}
 
-    <input type="submit" value="Dodaj" />
-{{ form_end(form) }}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    {% javascripts 'bundles/mateuszmedical/js/*' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
-{% javascripts 'bundles/mateuszmedical/js/*' %}
-<script src="{{ asset_url }}"></script>
-{% endjavascripts %}
+{% endblock %}

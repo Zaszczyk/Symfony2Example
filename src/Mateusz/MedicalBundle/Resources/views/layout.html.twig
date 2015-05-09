@@ -1,0 +1,29 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block title 'MateuszMedicalBundle' %}
+
+{% block body %}
+
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <p class="{{ label }}">
+                {{ flash }}
+            </p>
+        {% endfor %}
+    {% endfor %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% if code is defined %}
+        <h2>Code behind this page</h2>
+        <div class="block">
+            <div class="symfony-content">{{ code|raw }}</div>
+        </div>
+    {% endif %}
+{% endblock %}
