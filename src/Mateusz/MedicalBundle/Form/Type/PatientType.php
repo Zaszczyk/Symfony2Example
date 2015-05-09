@@ -10,6 +10,7 @@ namespace Mateusz\MedicalBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PatientType extends AbstractType {
 
@@ -19,8 +20,15 @@ class PatientType extends AbstractType {
         $builder->add('lastName', 'text');
         $builder->add('pesel', 'text');
         $builder->add('dateBirth', 'date');
-        $builder->add('clinics', 'collection', array('type' => new ClinicType()));
+
         $builder->setMethod('post');
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Mateusz\MedicalBundle\Entity\Patient',
+        ));
     }
 
     public function getName()

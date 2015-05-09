@@ -48,8 +48,7 @@ class Patient {
     protected $dateBirth;
 
     /**
-     * @ManyToMany(targetEntity="Clinic", inversedBy="patient")
-     * @JoinTable(name="patients_clinics")
+     * @ORM\ManyToMany(targetEntity="Clinic", mappedBy="clinics")
      **/
     private $clinics;
 
@@ -139,5 +138,12 @@ class Patient {
      */
     public function setClinics($clinics){
         $this->clinics = $clinics;
+    }
+
+    public function addClinic(Clinic $clinic)
+    {
+        if (!$this->clinics->contains($clinic)) {
+            $this->clinics->add($clinic);
+        }
     }
 }

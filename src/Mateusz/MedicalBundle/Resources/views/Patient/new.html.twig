@@ -30,5 +30,15 @@
         {{ form_widget(form.dateBirth) }}
     </div>
 
+    <div>
+        <h3>Clinics</h3>
+        <ul class="clinics" data-prototype="{{ form_widget(form.clinics.vars.prototype)|e }}">
+            {% for clinic in form.clinics %}
+                <li>{{ form_row(clinic.name) }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
     <input type="submit" value="Dodaj" />
 {{ form_end(form) }}
+

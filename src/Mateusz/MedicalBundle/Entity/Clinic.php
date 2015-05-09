@@ -29,8 +29,10 @@ class Clinic {
      */
     protected $name;
 
+
     /**
-     * @ManyToMany(targetEntity="Patient", mappedBy="patients")
+     * @ORM\ManyToMany(targetEntity="Patient", inversedBy="patients", cascade={"persist"})
+     * @ORM\JoinTable(name="patients_clinics")
      **/
     private $patients;
 
@@ -79,4 +81,17 @@ class Clinic {
     public function setPatients($patients){
         $this->patients = $patients;
     }
+
+    public function addPatient(Patient $patient)
+    {
+        $patient->addClinic($this);
+
+        $this->patients->add($patient);
+    }
+
+    public function removePatient(Patient $patient)
+    {
+        $this->patients->removeElement($patient);
+    }
+
 }

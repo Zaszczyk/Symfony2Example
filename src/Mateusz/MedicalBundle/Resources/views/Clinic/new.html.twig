@@ -14,5 +14,38 @@
         {{ form_widget(form.name) }}
     </div>
 
+    <div>
+        <h3>Pacjenci</h3>
+        <ul class="patients" data-prototype="{{ form_widget(form.patients.vars.prototype)|e }}">
+{#            {% for patient in form.patients %}
+                <div>
+                    {{ form_label(patient.firstName, 'Imię') }}
+                    {{ form_widget(patient.firstName) }}
+                </div>
+
+                <div>
+                    {{ form_label(patient.lastName, 'Nazwisko') }}
+                    {{ form_widget(patient.lastName) }}
+                </div>
+
+                <div>
+                    {{ form_label(patient.pesel, 'Pesel') }}
+                    {{ form_widget(patient.pesel) }}
+                </div>
+
+                <div>
+                    {{ form_label(patient.dateBirth, 'Data urodzenia') }}
+                    {{ form_widget(patient.dateBirth) }}
+                </div>
+            {% endfor %}#}
+        </ul>
+    </div>
+
     <input type="submit" value="Dodaj" />
 {{ form_end(form) }}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+{% javascripts 'bundles/mateuszmedical/js/*' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
