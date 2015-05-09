@@ -41,4 +41,47 @@ class ClinicController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/clinic/edit/{id}")
+     */
+    public function editAction($id, Request $request)
+    {
+        //pobieram encję Clinic o danym ID
+        $clinic = $this->getDoctrine()
+            ->getRepository('MateuszMedicalBundle:Clinic')
+            ->find($id);
+
+        //tworzę dla tej encji formularz
+        $form = $this->createForm(new ClinicType(), $clinic);
+
+        $formWithRequest = clone $form;
+
+        $formWithRequest->handleRequest($request);
+
+        //sprawdzam czy jest zapytanie z formularza do obrobienia
+        if ($formWithRequest->isValid()) {
+            $clinicForm = $formWithRequest->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($clinicForm);
+            $em->flush();
+
+            $session = $this->getRequest()->getSession();
+            $session->getFlashBag()->add('success', 'Klinika została zapisana.');
+        }
+
+        //i znowu muszę pobrać encję Clinic, ponieważ została zaktualizowna
+        $clinic = $this->getDoctrine()
+            ->getRepository('MateuszMedicalBundle:Clinic')
+            ->find($id);
+
+        //i znowu muszę stworzyć formularz dla tej encji, bardzo nie podoba mi się taki sposób. Szukałem 10 minut jak to obejść, nie znalazłem nic fajnego...
+        $form = $this->createForm(new ClinicType(), $clinic);
+
+        return $this->render('MateuszMedicalBundle:Clinic:edit.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
 }

@@ -7,6 +7,10 @@ patient:
      pattern:  /patient/new
      defaults: { _controller: MateuszMedicalBundle:Patient:new }
 
-clinic:
+clinic_new:
      pattern:  /clinic/new
      defaults: { _controller: MateuszMedicalBundle:Clinic:new }
+
+clinic_edit:
+    pattern:  /clinic/edit/{id}
+    defaults: { _controller: MateuszMedicalBundle:Clinic:edit }
