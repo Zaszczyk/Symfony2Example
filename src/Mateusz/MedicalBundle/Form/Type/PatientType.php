@@ -20,7 +20,6 @@ class PatientType extends AbstractType {
         $builder->add('lastName', 'text');
         $builder->add('pesel', 'text');
         $builder->add('dateBirth', 'date');
-
         $builder->setMethod('post');
     }
 
