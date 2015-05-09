@@ -52,6 +52,11 @@ class ClinicController extends Controller
             ->getRepository('MateuszMedicalBundle:Clinic')
             ->find($id);
 
+        if($clinic == null){
+            $this->addFlash('danger', 'Taka klinika nie istnieje, ale możesz dodać nową.');
+            $this->redirect('clinic/new/');
+        }
+
         //tworzę dla tej encji formularz
         $form = $this->createForm(new ClinicType(), $clinic);
 
@@ -67,8 +72,7 @@ class ClinicController extends Controller
             $em->persist($clinicForm);
             $em->flush();
 
-            $session = $this->getRequest()->getSession();
-            $session->getFlashBag()->add('success', 'Klinika została zapisana.');
+            $this->addFlash('success', 'Klinika została zapisana.');
         }
 
         //i znowu muszę pobrać encję Clinic, ponieważ została zaktualizowna
